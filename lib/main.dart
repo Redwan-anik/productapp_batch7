@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
       ),
       home: HomePage(),
       routes: {
+        // routes{} this is  a map where NewProductPage.routeName is key and after (:) this is value
         //HomePage.routeName: (context) =>HomePage(),
         NewProductPage.routeName:(context)=>NewProductPage(),
         ProductDetailsPage.routeName:(context)=>ProductDetailsPage()
