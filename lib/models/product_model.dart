@@ -7,7 +7,10 @@ class Product{
   String? description;
   double? price;
   bool? isFavorite;
-  String? uploadDate;
+  String? formattedDate;
+  int? uploadedMonth;
+  int? uploadedYear;
+  int? timeStamp;
   double? rating;
   String? image;
 
@@ -18,7 +21,7 @@ class Product{
         this.description,
         @required this.price,
         this.isFavorite =false,
-        this.uploadDate,
+        this.formattedDate,
         this.rating= 0.0,
         this.image
       }
@@ -26,7 +29,7 @@ class Product{
 
   @override
   String toString() {
-    return 'Product{id: $id, name: $name, Category: $Category, description: $description, price: $price, isFavorite: $isFavorite, uploadDate: $uploadDate, rating: $rating, image: $image}';
+    return 'Product{id: $id, name: $name, Category: $Category, description: $description, price: $price, isFavorite: $isFavorite, uploadDate: $formattedDate, rating: $rating, image: $image}';
   }
 
 }

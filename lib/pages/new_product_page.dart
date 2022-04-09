@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../models/product_model.dart';
 class NewProductPage extends StatefulWidget {
@@ -11,12 +12,33 @@ class NewProductPage extends StatefulWidget {
 
 class _NewProductPageState extends State<NewProductPage> {
   final _formKey = GlobalKey<FormState>();
+  var productObj = Product();
+  DateTime?_selectedDate;
+
+  _openCalender()async{
+    _selectedDate= await showDatePicker(context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2020),
+        lastDate: DateTime.now(),
+    ).whenComplete(() {
+      setState(() {
+
+      });
+    });
+    productObj.formattedDate=DateFormat("dd/MM/yyyy").format(_selectedDate!);
+    productObj.timeStamp =_selectedDate!.millisecondsSinceEpoch;
+    productObj.uploadedYear=_selectedDate!.month;
+    productObj.uploadedMonth=_selectedDate!.month;
+
+  }
+
+
   _saveProduct(){
     if(_formKey.currentState!.validate()){
       _formKey.currentState!.save();
     }
   }
-  var productObj = Product();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,11 +116,25 @@ class _NewProductPageState extends State<NewProductPage> {
                 },
               ),
               SizedBox(
-                height: 10,
+                height: 20,
               ),
+              Text("Select Purchase Date "),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                 Text(_selectedDate==null?"No Choosen Date Yet":"${productObj.formattedDate}"),
+                  OutlinedButton(onPressed:_openCalender, child: Text("SelectDate"))
+                ],
+              ),
+
+
+
               Center(
                   child: ElevatedButton(
-                  onPressed: _saveProduct,
+                  onPressed: (){
+                    _saveProduct();
+                    // print(_selectedDate);
+                  },
                   child: Text("Save"),
                   )
               )
