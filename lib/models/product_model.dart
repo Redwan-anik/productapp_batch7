@@ -28,7 +28,7 @@ class Product{
   double? rating;
   String? image;
 
-  Map<String, dynamic>? toMap(){
+  Map<String, dynamic> toMap(){
     //create a map
     var map = <String, dynamic>{
       COL_PRODUCT_NAME:name,

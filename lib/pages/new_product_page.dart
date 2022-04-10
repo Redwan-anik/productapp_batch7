@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:productapp_batch7/db/dh_helper.dart';
 
 import '../models/product_model.dart';
 import '../utils/product_utils.dart';
@@ -59,6 +60,7 @@ class _NewProductPageState extends State<NewProductPage> {
       if(_selectedDate==null) return;
       if(_imagePath==null) return;
       if(categoryDropDown==null) return;
+      DBSQLiteHelper.insertNewProduct(productObj);
       print(productObj);
     }
   }
