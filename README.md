@@ -1,4 +1,4 @@
-# productapp_batch7
+# ProductShow_App
 
 A new Flutter project.
 
